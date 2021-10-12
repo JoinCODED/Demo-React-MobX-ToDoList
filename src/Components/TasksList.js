@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TaskItem from "./TaskItem";
+import taskStore from "../taskStore";
+import { observer } from "mobx-react";
 
 function TasksList(props) {
-  const tasksList = props.tasks.map((task) => (
-    <TaskItem task={task} deleteTask={props.deleteTask} />
-  ));
+  useEffect(() => {
+    taskStore.fetchTasks();
+  }, []);
+
+  const tasksList = taskStore.tasks.map((task) => <TaskItem task={task} />);
 
   return (
     <div class="row">
@@ -19,4 +23,4 @@ function TasksList(props) {
   );
 }
 
-export default TasksList;
+export default observer(TasksList);

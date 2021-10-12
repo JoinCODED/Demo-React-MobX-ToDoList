@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import taskStore from "../taskStore";
+import { observer } from "mobx-react";
 
-export default function TaskItem(props) {
+function TaskItem(props) {
   const [update, setUpdate] = useState(false);
 
   const task = props.task;
@@ -14,7 +16,7 @@ export default function TaskItem(props) {
           <p
             className="remove"
             onClick={() => {
-              props.deleteTask(task.id);
+              taskStore.deleteTask(task.id);
             }}
           >
             Delete
@@ -51,3 +53,5 @@ export default function TaskItem(props) {
     </>
   );
 }
+
+export default observer(TaskItem);

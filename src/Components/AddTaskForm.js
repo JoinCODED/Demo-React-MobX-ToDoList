@@ -1,17 +1,17 @@
 import React, { useState } from "react";
+import taskStore from "../taskStore";
+import { observer } from "mobx-react";
 
 function Form({ createTask }) {
   const [task, setTask] = useState({ title: "", priority: "" });
 
   const handleChange = (e) => {
-    //title       : "wash dishes"
-    //priority    :  "high"
     setTask({ ...task, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault(); //stops page from refreshing
-    createTask(task);
+    taskStore.createTask(task);
     setTask({ title: "", priority: "" });
   };
 
@@ -43,4 +43,4 @@ function Form({ createTask }) {
   );
 }
 
-export default Form;
+export default observer(Form);
