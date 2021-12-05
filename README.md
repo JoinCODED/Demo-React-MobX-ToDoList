@@ -10,7 +10,7 @@ A todo list app that let you create/delete tasks and set a priority.
 The students should learn how to apply MobX .
 
 ## Steps
-1. `yarn add mobx mobx-react`
+1. `npm install mobx mobx-react`
 2. Create a file called taskStore in src
 3. define the task class , tasks =[]
 4. `import { makeObservable, observable,action } from "mobx";`
